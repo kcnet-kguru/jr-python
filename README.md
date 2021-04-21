@@ -1,4 +1,4 @@
-# K-GURU jr Javascript Code 코딩 퀴즈
+# K-GURU jr Python Code 코딩 퀴즈
 
 ### 깃허브에 퀴즈 올리는 법
 
