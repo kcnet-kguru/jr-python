@@ -10,6 +10,5 @@
 # 20
 # 30
 # 40
-
 def closest_multiple_10(i):
-    return i
+    return round((i-1) / 10) * 10
