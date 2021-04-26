@@ -7,4 +7,9 @@
 
 
 def magical_well(a, b, n):
-    return 0
+    result = 0
+    for i in range(0,n):
+        result += a*b
+        a += 1
+        b += 1
+    return result

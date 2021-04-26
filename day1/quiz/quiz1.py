@@ -12,4 +12,11 @@
 # 40
 
 def closest_multiple_10(i):
+    result = 0
+    remainder = i % 10
+    if remainder < 5:
+        i = i - remainder
+    else:
+        i = i - remainder + 10
+
     return i
