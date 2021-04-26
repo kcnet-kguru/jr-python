@@ -11,5 +11,19 @@
 # 30
 # 40
 
-def closest_multiple_10(i):
-    return i
+import math
+
+
+def closest_multiple_10_1(i):
+    result = round(i, -1)
+
+    return result
+
+def closest_multiple_10_2(i):
+    remains = 10 - int(str(i)[-1])
+    if remains <= 5:
+        result = i + remains
+    else:
+        result = i - (int(str(i)[-1]))
+
+    return result

@@ -7,4 +7,10 @@
 
 
 def magical_well(a, b, n):
-    return 0
+    income = 0
+    for i in range(n):
+        income += a*b
+        a += 1
+        b += 1
+
+    return income
