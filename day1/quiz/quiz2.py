@@ -7,4 +7,14 @@
 
 
 def magical_well(a, b, n):
-    return 0
+    result = 0
+    while n > 0:
+        result += a*b
+        a += 1
+        b += 1
+        n -= 1
+    return result
+
+
+print(magical_well(1, 2, 2))
+

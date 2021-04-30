@@ -13,4 +13,13 @@
 # 10 * 3 * -1 = -30
 
 def max_product(obj, k):
-    pass
+    result = 1
+    while k > 0:
+        result *= obj.pop(obj.index(max(obj)))
+        k -= 1
+    return result
+
+print(max_product ([4, 3, 5], 2))
+print(max_product ([8, 10 , 9, 7], 3))
+print(max_product([10, 8, 3, 2, 1, 4, 10], 5))
+print(max_product ([10, 3, -1, -27] , 3))
