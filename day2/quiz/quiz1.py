@@ -11,6 +11,27 @@
 #
 # max_product ([10, 3, -1, -27] , 3)  return (-30)
 # 10 * 3 * -1 = -30
+import numpy as np
 
-def max_product(obj, k):
-    pass
+def max_product_1(obj, k):
+    target_list = obj
+    default = 1
+
+    for i in range(len(target_list)):
+        for j in range(len(target_list) - 1):
+            tmp = target_list[i]
+            if target_list[i] > target_list[i + 1]:
+                target_list[i] = target_list[i + 1]
+                target_list[i + 1] = tmp
+
+    for value in target_list[-k:]:
+        default *= value
+
+    return default
+
+
+def max_product_2(obj, k):
+    obj_array = np.array(obj)
+    result = np.prod(obj_array[np.argsort(obj_array)[-3:][::-1]])
+
+    return result

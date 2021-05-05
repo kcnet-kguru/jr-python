@@ -8,6 +8,14 @@
 #
 # minSum([9,2,8,7,5,4,0,6]) ==> return (74)
 # 9*0 + 8*2 +7*4 +6*5 = 74
+import numpy as np
 
 def min_sum(lst):
-    pass
+    obj_array = np.array(lst)
+    sorted = obj_array[np.argsort(obj_array)]
+    sum = 0
+
+    for idx in range(len(sorted)//2):
+        sum += sorted[idx] * sorted[-idx - 1]
+
+    return sum

@@ -13,4 +13,11 @@
 # | 64 - 640 | = 576
 
 def max_gap(lst):
-    pass
+    lst.sort()
+    result = 0
+
+    for idx in range(len(lst)-1):
+        if result < abs(lst[idx+1] - lst[idx]):
+            result = abs(lst[idx+1] - lst[idx])
+
+    return result
