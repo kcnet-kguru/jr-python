@@ -7,4 +7,4 @@
 
 
 def magical_well(a, b, n):
-    return 0
+    return sum([(a+i)*(b+i) for i in range(n)])
