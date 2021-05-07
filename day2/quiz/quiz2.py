@@ -10,10 +10,4 @@
 # 9*0 + 8*2 +7*4 +6*5 = 74
 
 def min_sum(lst):
-    sorted_lst = sorted(lst)
-    lst_length = len(lst)
-
-    left = sorted(sorted_lst[:lst_length // 2], reverse=True)
-    right = sorted_lst[-(lst_length // 2):]
-
-    return sum(map(lambda x: x[0] * x[1], zip(left, right)))
+    pass
