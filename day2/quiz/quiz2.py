@@ -8,6 +8,10 @@
 #
 # minSum([9,2,8,7,5,4,0,6]) ==> return (74)
 # 9*0 + 8*2 +7*4 +6*5 = 74
+from functools import reduce
 
 def min_sum(lst):
-    pass
+    lst.sort(reverse=True)
+    size = len(lst)
+    return reduce(lambda acc, cur: acc + (lst[cur]*lst[size-1-cur]), range(0, (int)(size/2) ), 0)
+

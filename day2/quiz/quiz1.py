@@ -12,5 +12,9 @@
 # max_product ([10, 3, -1, -27] , 3)  return (-30)
 # 10 * 3 * -1 = -30
 
+from functools import reduce
+
 def max_product(obj, k):
-    pass
+    result = 1
+    obj.sort(reverse=True)
+    return reduce(lambda acc, cur: acc * obj[cur], range(0, k), 1)
