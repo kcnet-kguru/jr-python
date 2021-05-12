@@ -2,36 +2,25 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import unittest
-from copy import deepcopy
-from quiz.quiz3 import max_gap
+from quiz.quiz3 import productArray
 
-# 주어진 배열을 정렬하여 이웃한 숫자와의 갭 차이가 제일 큰 수를 리턴하시오
-# ex)
-# max_gap ([13,10,5,2,9]) ==> return (4)
-# 9 - 5 = 4
-#
-# max_gap ([-3,-27,-4,-2]) ==> return (23)
-# |-4- (-27) | = 23
-#
-# max_gap ([-7,-42,-809,-14,-12]) ==> return (767)
-# | -809- (-42) | = 767
-#
-# max_gap ([-54,37,0,64,640,0,-15]) ==> return (576)
-# | 64 - 640 | = 576
+# 정수의 배열 Arr[] 이 주어졌을 때 prod[i]는 Arr[i]를 제외한 나머지 요소들의 곱을 가지고 있는 같은 크기의 배열을 반환합니다.
+# Example
+# productArray ([12,20]) ==>  return {20,12}
+# productArray ([1,5,2]) ==> return {10,2,5}
+# productArray ([10,3,5,6,2]) return ==> {180,600,360,300,900}
 
 test_case = [
-        [[13, 10, 5, 2, 9], 4],
-        [[-3, -27, -4, -2], 23],
-        [[-7, -42, -809, -14, -12], 767],
-        [[-54, 37, 0, 64, 640, 0, -15], 576]
+        [[12, 20], [20, 12]],
+        [[1, 5, 2], [10, 2, 5]],
+        [[10, 3, 5, 6, 2], [180, 600, 360, 300, 900]]
             ]
 
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
-        copy = deepcopy(test_case)
-        for value1, answer in copy:
-            self.assertEqual(max_gap(value1), answer)
+        for value1, answer in test_case:
+            self.assertEqual(productArray(value1), answer)
 
 
 if __name__ == '__main__':
