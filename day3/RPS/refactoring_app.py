@@ -21,28 +21,31 @@ def print_choice(human_choice, computer_choice):
     print(f"컴퓨터의 선택은 {computer_choice}")
 
 
-def print_win_lose(computer_choice, human_beats, human_lose_to):
+def who_is_winner(computer_choice, human_beats, human_lose_to):
     if computer_choice == human_lose_to:
-        print(f'컴퓨터 승리!!!')
+        # print(f'컴퓨터 승리!!!')
+        return "com"
     elif computer_choice == human_beats:
-        print(f'당신이 이겼습니다.')
+        # print(f'당신이 이겼습니다.')
+        return "human"
 
 
-def print_result(human_choice, computer_choice):
+def game_result(human_choice, computer_choice):
     if human_choice == computer_choice:
-        print('비겼습니다.')
+        # print('비겼습니다.')
+        return "draw"
 
     if human_choice == '바위':
-        print_win_lose(computer_choice, '가위', '보')
+        return who_is_winner(computer_choice, '가위', '보')
     elif human_choice == '보':
-        print_win_lose(computer_choice, '바위', '가위')
+        return who_is_winner(computer_choice, '바위', '가위')
     elif human_choice == '가위':
-        print_win_lose(computer_choice, '보', '바위')
+        return who_is_winner(computer_choice, '보', '바위')
 
 
-if __name__ == '__main__':
+def start_rps():
     print_options()
     _human_choice = get_human_choice()
     _computer_choice = get_computer_choice()
     print_choice(_human_choice, _computer_choice)
-    print_result(_human_choice, _computer_choice)
+    return game_result(_human_choice, _computer_choice), _human_choice, _computer_choice
