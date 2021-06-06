@@ -1,11 +1,11 @@
 # 주어진 리스트에서 코딩 언어의 카운트를 집계한 결과 객체를 리턴하는 함수를 작성하시오
 # Example
-# list1 = [
-#     { 'firstName': 'Noah', 'lastName': 'M.', 'country': 'Switzerland', 'continent': 'Europe', 'age': 19, 'language': 'C' },
-#     { 'firstName': 'Anna', 'lastName': 'R.', 'country': 'Liechtenstein', 'continent': 'Europe', 'age': 52, 'language': 'JavaScript' },
-#     { 'firstName': 'Ramon', 'lastName': 'R.', 'country': 'Paraguay', 'continent': 'Americas', 'age': 29, 'language': 'Ruby' },
-#     { 'firstName': 'George', 'lastName': 'B.', 'country': 'England', 'continent': 'Europe', 'age': 81, 'language': 'C' },
-#     ]
+list1 = [
+    { 'firstName': 'Noah', 'lastName': 'M.', 'country': 'Switzerland', 'continent': 'Europe', 'age': 19, 'language': 'C' },
+    { 'firstName': 'Anna', 'lastName': 'R.', 'country': 'Liechtenstein', 'continent': 'Europe', 'age': 52, 'language': 'JavaScript' },
+    { 'firstName': 'Ramon', 'lastName': 'R.', 'country': 'Paraguay', 'continent': 'Americas', 'age': 29, 'language': 'Ruby' },
+    { 'firstName': 'George', 'lastName': 'B.', 'country': 'England', 'continent': 'Europe', 'age': 81, 'language': 'C' },
+    ]
 
 # result: { 'C': 2, 'JavaScript': 1, 'Ruby': 1 }
 
@@ -14,5 +14,10 @@
 # 입력 배열은 위의 예와 같이 항상 유효하고 포맷됩니다.
 
 def count_languages(lst):
-    # your code here
-    pass
+    result = {'C':0, 'JavaScript':0, 'Ruby':0}
+    for dic in lst:
+        language = dic['language']
+        result[language] += 1
+    return result
+
+print(count_languages(list1))

@@ -5,6 +5,13 @@
 
 import string
 
-
 def is_pangram(s):
-    return False
+    s = s.upper()
+    compare_lst = string.ascii_uppercase
+    for alpha in compare_lst:
+        if alpha not in s:
+            return False
+    return True
+
+print(is_pangram('abc'))
+print(is_pangram('The quick brown fox jumps over the lazy dog'))

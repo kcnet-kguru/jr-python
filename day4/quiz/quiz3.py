@@ -5,5 +5,11 @@
 
 
 def beggars(values, n) :
-    # your code here
-    pass
+    result = [0] * n
+    values = sorted(values, reverse=True)
+    for idx, num in enumerate(values):
+        result[idx%n] += num
+    return result
+
+print(beggars([1, 2, 3, 4, 5], 2))
+print(beggars([1, 2, 3, 4, 5], 3))
