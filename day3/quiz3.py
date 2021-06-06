@@ -5,4 +5,11 @@
 # productArray ([10,3,5,6,2]) return ==> {180,600,360,300,900}
 
 def productArray(arr):
-    pass
+    total = 1
+    for num in arr:
+        total *= num
+    return [total//num for num in arr]
+
+print(productArray([12, 20]))
+print(productArray([1, 5, 2]))
+print(productArray([10, 3, 5, 6, 2]))

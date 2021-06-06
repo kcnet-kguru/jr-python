@@ -7,4 +7,10 @@
 # ["AD", "4S", "7H", "KS", "10S"] ==> false
 
 def isFlush(cards):
-    pass
+    for idx in range(1, 5):
+        if cards[idx][1] != cards[idx-1][1]:
+            return False
+    return True
+
+print(isFlush(["AS", "3S", "9S", "KS", "4S"]))
+print(isFlush(["AD", "4S", "7H", "KS", "10S"]))

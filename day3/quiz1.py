@@ -5,4 +5,8 @@
 
 
 def diffBig2(arr):
-    pass
+    max_a = arr.pop(arr.index(max(arr)))
+    max_b = arr.pop(arr.index(max(arr)))
+    return max_a - max_b
+
+print(diffBig2([10, 5, 2]))

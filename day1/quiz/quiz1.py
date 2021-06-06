@@ -10,5 +10,13 @@
 # 20
 # 30
 # 40
+
 def closest_multiple_10(i):
-    return round((i-1) / 10) * 10
+    if i%10 >= 5:
+        return i//10*10+10
+    else:
+        return i//10*10
+
+print(closest_multiple_10(22))
+print(closest_multiple_10(25))
+print(closest_multiple_10(37))
