@@ -1,0 +1,62 @@
+Length of x: 1000
+Total elements: 1000000
+calculate_z_serial_purepython took 2428.9105405807495 seconds
+Filename: .\julia1_memoryprofiler.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+     9  118.977 MiB  118.977 MiB           1   @profile
+    10                                         def calculate_z_serial_purepython(maxiter, zs, cs):
+    11                                             """Calculate output list using Julia update rule"""
+    12  126.609 MiB    7.633 MiB           1       output = [0] * len(zs)
+    13  128.801 MiB -28779243.840 MiB     1000001       for i in range(len(zs)):
+    14  128.801 MiB -28779190.480 MiB     1000000           n = 0
+    15  128.801 MiB -28779187.559 MiB     1000000           z = zs[i]
+    16  128.801 MiB -28779406.809 MiB     1000000           c = cs[i]
+    17  128.801 MiB -602901468.863 MiB    34219980           while n < maxiter and abs(z) < 2:
+    18  128.801 MiB -574122252.496 MiB    33219980               z = z * z + c
+    19  128.801 MiB -574122280.953 MiB    33219980               n += 1
+    20  128.801 MiB -28779243.840 MiB     1000000           output[i] = n
+    21   75.441 MiB  -53.359 MiB           1       return output
+
+
+Filename: .\julia1_memoryprofiler.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    24   41.223 MiB   41.223 MiB           1   @profile
+    25                                         def calc_pure_python(draw_output, desired_width, max_iterations):
+    26                                             """Create a list of complex co-ordinates (zs) and complex parameters (cs), build Julia set and display"""
+    27   41.223 MiB    0.000 MiB           1       x_step = (x2 - x1) / desired_width
+    28   41.223 MiB    0.000 MiB           1       y_step = (y1 - y2) / desired_width
+    29   41.223 MiB    0.000 MiB           1       x = []
+    30   41.223 MiB    0.000 MiB           1       y = []
+    31   41.223 MiB    0.000 MiB           1       ycoord = y2
+    32   41.230 MiB    0.008 MiB        1001       while ycoord > y1:
+    33   41.230 MiB    0.000 MiB        1000           y.append(ycoord)
+    34   41.230 MiB    0.000 MiB        1000           ycoord += y_step
+    35   41.230 MiB    0.000 MiB           1       xcoord = x1
+    36   41.289 MiB    0.031 MiB        1001       while xcoord < x2:
+    37   41.289 MiB    0.027 MiB        1000           x.append(xcoord)
+    38   41.289 MiB    0.000 MiB        1000           xcoord += x_step
+    39                                             # set width and height to the generated pixel counts, rather than the
+    40                                             # pre-rounding desired width and height
+    41                                             # build a list of co-ordinates and the initial condition for each cell.
+    42                                             # Note that our initial condition is a constant and could easily be removed,
+    43                                             # we use it to simulate a real-world scenario with several inputs to our function
+    44   41.289 MiB    0.000 MiB           1       zs = []
+    45   41.289 MiB    0.000 MiB           1       cs = []
+    46  118.977 MiB   -1.680 MiB        1001       for ycoord in y:
+    47  118.977 MiB -1589.242 MiB     1001000           for xcoord in x:
+    48  118.977 MiB -1595.766 MiB     1000000               zs.append(complex(xcoord, ycoord))
+    49  118.977 MiB -1548.918 MiB     1000000               cs.append(complex(c_real, c_imag))
+    50
+    51  118.977 MiB    0.000 MiB           1       print("Length of x:", len(x))
+    52  118.977 MiB    0.000 MiB           1       print("Total elements:", len(zs))
+    53  118.977 MiB    0.000 MiB           1       start_time = time.time()
+    54   75.539 MiB   75.539 MiB           1       output = calculate_z_serial_purepython(max_iterations, zs, cs)
+    55   75.543 MiB    0.004 MiB           1       end_time = time.time()
+    56   75.543 MiB    0.000 MiB           1       secs = end_time - start_time
+    57   75.566 MiB    0.023 MiB           1       print(calculate_z_serial_purepython.__name__ + " took", secs, "seconds")
+    58
+    59   78.305 MiB    2.738 MiB           1       assert sum(output) == 33219980  # this sum is expected for 1000^2 grid with 300 iterations
