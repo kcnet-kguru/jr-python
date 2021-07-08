@@ -7,4 +7,4 @@
 # ["AD", "4S", "7H", "KS", "10S"] ==> false
 
 def isFlush(cards):
-    pass
+    return all(cards[0][-1] == cards[i][-1] for i in range(len(cards)))

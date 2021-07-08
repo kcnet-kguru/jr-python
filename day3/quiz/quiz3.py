@@ -5,4 +5,12 @@
 # productArray ([10,3,5,6,2]) return ==> {180,600,360,300,900}
 
 def productArray(arr):
-    pass
+    from functools import reduce
+
+    result_arr = []
+    product_num = reduce(lambda x, y: x * y, arr)
+
+    for num in arr:
+        result_arr.append(int(product_num/num))
+
+    return result_arr

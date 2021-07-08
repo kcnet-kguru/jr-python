@@ -3,8 +3,11 @@
 # 주어진 문자열이 판그램일 경우 True 를 리턴하고 아닐 경우 False를 리턴하는 함수를 작성하시오.
 # 숫자 및 구두점을 무시합니다.
 
-import string
+import re
+from collections import Counter
 
 
 def is_pangram(s):
-    return False
+    pattern = '[A-Za-z]+'
+    return bool(len(Counter(''.join(re.findall(pattern, s)).lower()).keys()) // 26)
+

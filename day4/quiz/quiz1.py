@@ -13,6 +13,10 @@
 # 카운트 값은 올바른 숫자여야 합니다.
 # 입력 배열은 위의 예와 같이 항상 유효하고 포맷됩니다.
 
+import pandas as pd
+from collections import Counter
+
+
 def count_languages(lst):
-    # your code here
-    pass
+    df = pd.DataFrame(lst)
+    return Counter(df['language'].tolist())
